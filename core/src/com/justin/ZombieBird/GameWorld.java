@@ -1,22 +1,24 @@
 package com.justin.ZombieBird;
 
 import com.badlogic.gdx.math.Rectangle;
+import com.justin.GameObjects.Bird;
 
 /**
  * Created by Justin on 7/3/2014.
  */
 public class GameWorld {
-    private Rectangle rect = new Rectangle(0, 0, 17, 23);
+    private Bird bird;
+
+    public GameWorld(int midPointY) {
+        bird = new Bird(33, midPointY - 5, 17, 12);
+    }
 
     public void update(float delta) {
-        System.out.println("gameworld- update");
-        rect.x++;
-        if (rect.x > 137) {
-            rect.x = 0;
-        }
+        bird.update(delta);
     }
 
-    public Rectangle getRect() {
-        return rect;
+    public Bird getBird() {
+        return bird;
     }
+
 }

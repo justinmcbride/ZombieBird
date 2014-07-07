@@ -3,6 +3,8 @@ package com.justin.ZombieBird;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.justin.ZBHelpers.InputHandler;
+
 /**
  * Created by Justin on 7/3/2014.
  */
@@ -11,10 +13,18 @@ public class GameScreen implements Screen {
     private GameRenderer gameRenderer;
 
     public GameScreen() {
-        System.out.println("GameScreen Attached");
+        float screenWidth = Gdx.graphics.getWidth();
+        float screenHeight = Gdx.graphics.getHeight();
+        float gameWidth = 136;
+        float gameHeight = screenHeight / (screenWidth / gameWidth);
 
-        gameWorld = new GameWorld();
+        int midPointY = (int)(gameHeight / 2);
+
+
+        gameWorld = new GameWorld(midPointY);
         gameRenderer = new GameRenderer(gameWorld);
+
+        Gdx.input.setInputProcessor(new InputHandler(gameWorld.getBird()));
     }
 
     @Override
