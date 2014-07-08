@@ -1,5 +1,6 @@
 package com.justin.GameObjects;
 
+import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 
 import java.util.Random;
@@ -39,6 +40,17 @@ public class Pipe extends Scrollable {
         skullUp.set(position.x - (SKULL_WIDTH - width) / 2, position.y + height - SKULL_HEIGHT, SKULL_WIDTH, SKULL_HEIGHT);
         skullDown.set(position.x - (SKULL_WIDTH - width) / 2, barDown.y, SKULL_WIDTH, SKULL_HEIGHT);
 
+    }
+
+    public boolean collides(Bird bird) {
+        if (position.x < bird.getX() + bird.getWidth()) {
+            return (Intersector.overlaps(bird.getBoundingCircle(), barUp)
+                    || Intersector.overlaps(bird.getBoundingCircle(), barDown)
+                    || Intersector.overlaps(bird.getBoundingCircle(), skullUp)
+                    || Intersector.overlaps(bird.getBoundingCircle(), skullDown)
+            );
+        }
+        return false;
     }
 
     @Override

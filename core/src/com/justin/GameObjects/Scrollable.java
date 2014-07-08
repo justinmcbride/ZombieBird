@@ -1,5 +1,6 @@
 package com.justin.GameObjects;
 
+import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Vector2;
 
 /**
@@ -20,6 +21,12 @@ public class Scrollable {
 
         isScrolledLeft = false;
     }
+
+    public void stop() {
+        velocity.x = 0;
+    }
+
+
 
     public void update(float delta) {
         position.add(velocity.cpy().scl(delta));
