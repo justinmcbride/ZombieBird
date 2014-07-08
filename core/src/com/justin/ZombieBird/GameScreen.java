@@ -11,6 +11,7 @@ import com.justin.ZBHelpers.InputHandler;
 public class GameScreen implements Screen {
     private GameWorld gameWorld;
     private GameRenderer gameRenderer;
+    private float runTime = 0;
 
     public GameScreen() {
         float screenWidth = Gdx.graphics.getWidth();
@@ -22,15 +23,16 @@ public class GameScreen implements Screen {
 
 
         gameWorld = new GameWorld(midPointY);
-        gameRenderer = new GameRenderer(gameWorld);
+        gameRenderer = new GameRenderer(gameWorld, (int)gameHeight, midPointY);
 
         Gdx.input.setInputProcessor(new InputHandler(gameWorld.getBird()));
     }
 
     @Override
     public void render(float delta) {
+        runTime += delta;
         gameWorld.update(delta);
-        gameRenderer.render();
+        gameRenderer.render(runTime);
     }
 
     @Override

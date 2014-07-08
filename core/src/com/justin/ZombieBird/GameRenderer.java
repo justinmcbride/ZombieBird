@@ -3,6 +3,7 @@ package com.justin.ZombieBird;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 /**
@@ -12,16 +13,27 @@ public class GameRenderer {
     private GameWorld gameWorld;
     private OrthographicCamera camera;
     private ShapeRenderer shapeRenderer;
+    private SpriteBatch batcher;
 
-    public GameRenderer(GameWorld gameWorld) {
+    private int midPointY;
+    private int gameHeight;
+
+    public GameRenderer(GameWorld gameWorld, int gameHeight, int midPointY) {
         this.gameWorld = gameWorld;
         camera = new OrthographicCamera();
-        camera.setToOrtho(true, 126, 204);
+        camera.setToOrtho(true, 137, 204);
+
+        batcher = new SpriteBatch();
+        batcher.setProjectionMatrix(camera.combined);
+
+        this.midPointY = midPointY;
+        this.gameHeight = gameHeight;
+
         shapeRenderer = new ShapeRenderer();
         shapeRenderer.setProjectionMatrix(camera.combined);
     }
 
-    public void render() {
+    public void render(float runTime) {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
