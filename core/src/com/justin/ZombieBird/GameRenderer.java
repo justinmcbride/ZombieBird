@@ -1,7 +1,6 @@
 package com.justin.ZombieBird;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -12,7 +11,7 @@ import com.justin.GameObjects.Bird;
 import com.justin.GameObjects.Grass;
 import com.justin.GameObjects.Pipe;
 import com.justin.GameObjects.ScrollHandler;
-import com.justin.ZBHelpers.AssetHelper;
+import com.justin.ZBHelpers.AssetLoader;
 
 
 /**
@@ -48,16 +47,16 @@ public class GameRenderer {
     }
 
     private void initAssets() {
-        bg = AssetHelper.bg;
-        grass = AssetHelper.grass;
-        birdAnimation = AssetHelper.birdAnimation;
-        birdMid = AssetHelper.bird;
-        birdDown = AssetHelper.birdDown;
-        birdUp = AssetHelper.birdUp;
+        bg = AssetLoader.bg;
+        grass = AssetLoader.grass;
+        birdAnimation = AssetLoader.birdAnimation;
+        birdMid = AssetLoader.bird;
+        birdDown = AssetLoader.birdDown;
+        birdUp = AssetLoader.birdUp;
 
-        skullUp = AssetHelper.skullUp;
-        skullDown = AssetHelper.skullDown;
-        bar = AssetHelper.bar;
+        skullUp = AssetLoader.skullUp;
+        skullDown = AssetLoader.skullDown;
+        bar = AssetLoader.bar;
     }
 
     private void drawGrass() {

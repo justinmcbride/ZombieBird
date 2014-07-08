@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 /**
  * Created by Justin on 7/7/2014.
  */
-public class AssetHelper {
+public class AssetLoader {
     public static Texture texture;
     public static TextureRegion bg, grass;
 
