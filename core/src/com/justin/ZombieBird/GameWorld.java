@@ -100,4 +100,9 @@ public class GameWorld {
         return bird;
     }
 
+    public boolean isGameOver() {
+        if (currentState == GameState.GAMEOVER) return true;
+        else return false;
+    }
+
 }
