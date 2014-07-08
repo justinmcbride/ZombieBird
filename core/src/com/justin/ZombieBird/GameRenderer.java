@@ -22,18 +22,8 @@ public class GameRenderer {
     }
 
     public void render() {
-        System.out.println("GameRenderer - render");
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        shapeRenderer.setColor(87 / 255.0f, 109 / 255.0f, 120 / 255.0f, 1);
-        shapeRenderer.rect(gameWorld.getRect().x, gameWorld.getRect().y, gameWorld.getRect().width, gameWorld.getRect().height);
-        shapeRenderer.end();
-
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-        shapeRenderer.setColor(255 / 255.05f, 109 / 255.0f, 120 / 255.0f, 1);
-        shapeRenderer.end();
 
     }
 }
