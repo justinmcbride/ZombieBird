@@ -17,7 +17,7 @@ public class Bird {
     private float rotation;
     private int width;
     private int height;
-    private boolean isAlive;
+    private boolean isAlive = true;
 
     public Bird(float x, float y, int width, int height) {
         this.width = width; this.height = height;

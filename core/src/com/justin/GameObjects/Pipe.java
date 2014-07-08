@@ -10,6 +10,7 @@ import java.util.Random;
  */
 public class Pipe extends Scrollable {
     private Random r;
+    private boolean isScored = false;
     private Rectangle skullUp, skullDown, barUp, barDown;
 
     public static final int VERTICAL_GAP = 45;
@@ -43,6 +44,7 @@ public class Pipe extends Scrollable {
     }
 
     public boolean collides(Bird bird) {
+
         if (position.x < bird.getX() + bird.getWidth()) {
             return (Intersector.overlaps(bird.getBoundingCircle(), barUp)
                     || Intersector.overlaps(bird.getBoundingCircle(), barDown)
@@ -57,6 +59,15 @@ public class Pipe extends Scrollable {
     public void reset(float newX) {
         super.reset(newX);
         height = r.nextInt(90) + 15;
+        this.isScored = false;
+    }
+
+    public boolean isScored() {
+        return isScored;
+    }
+
+    public void setScored(boolean isScored) {
+        this.isScored = isScored;
     }
 
     public Rectangle getSkullUp() {

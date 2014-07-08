@@ -18,7 +18,7 @@ public class GameWorld {
 
     public GameWorld(int midPointY) {
         bird = new Bird(33, midPointY - 5, 17, 12);
-        scroller = new ScrollHandler(midPointY + 66);
+        scroller = new ScrollHandler(this, midPointY + 66);
         ground = new Rectangle(0, midPointY + 66, 136, 11);
     }
 
@@ -38,7 +38,7 @@ public class GameWorld {
         bird.update(delta);
         scroller.update(delta);
 
-        if (scroller.collides(bird)) {
+        if (scroller.collides(bird) && bird.isAlive()) {
             scroller.stop();
             bird.die();
             AssetLoader.dead.play();
