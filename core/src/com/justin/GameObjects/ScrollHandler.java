@@ -77,6 +77,14 @@ public class ScrollHandler {
         pipe3.stop();
     }
 
+    public void onRestart() {
+        frontGrass.onRestart(0, SCROLL_SPEED);
+        backGrass.onRestart(frontGrass.getTailX(), SCROLL_SPEED);
+        pipe1.onRestart(210, SCROLL_SPEED);
+        pipe2.onRestart(pipe1.getTailX(), SCROLL_SPEED);
+        pipe3.onRestart(pipe2.getTailX(), SCROLL_SPEED);
+    }
+
     public boolean collides(Bird bird) {
         if (!pipe1.isScored() && pipe1.getX() + (pipe1.getWidth() / 2) < bird.getX() + bird.getWidth()) {
             gameWorld.addScore(1);

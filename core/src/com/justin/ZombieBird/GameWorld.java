@@ -13,6 +13,7 @@ public class GameWorld {
     private Bird bird;
     private ScrollHandler scroller;
     private Rectangle ground;
+    public int midPointY;
 
     private int score = 0;
 
@@ -27,6 +28,7 @@ public class GameWorld {
         bird = new Bird(33, midPointY - 5, 17, 12);
         scroller = new ScrollHandler(this, midPointY + 66);
         ground = new Rectangle(0, midPointY + 66, 136, 11);
+        this.midPointY = midPointY;
     }
 
     public int getScore() {
@@ -70,7 +72,24 @@ public class GameWorld {
             scroller.stop();
             bird.die();
             bird.decelerate();
+            currentState = GameState.GAMEOVER;
         }
+    }
+
+    public boolean isReady() {
+        if (currentState == GameState.READY) return true;
+        else return false;
+    }
+
+    public void start() {
+        currentState = GameState.RUNNING;
+    }
+
+    public void restart() {
+        currentState = GameState.READY;
+        score = 0;
+        bird.onRestart(midPointY - 5);
+        scroller.onRestart();
     }
 
     public ScrollHandler getScroller() {
