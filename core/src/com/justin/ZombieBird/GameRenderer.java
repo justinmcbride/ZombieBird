@@ -8,6 +8,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.justin.GameObjects.Bird;
+import com.justin.GameObjects.Grass;
+import com.justin.GameObjects.Pipe;
+import com.justin.GameObjects.ScrollHandler;
 import com.justin.ZBHelpers.AssetHelper;
 
 
@@ -20,6 +23,9 @@ public class GameRenderer {
     private ShapeRenderer shapeRenderer;
     private SpriteBatch batcher;
     private Bird bird;
+    private ScrollHandler scroller;
+    private Grass frontGrass, backGrass;
+    private Pipe pipe1, pipe2, pipe3;
 
     private TextureRegion bg, grass;
     private Animation birdAnimation;
@@ -31,6 +37,13 @@ public class GameRenderer {
 
     private void initGameObjects() {
         bird = gameWorld.getBird();
+        scroller = gameWorld.getScroller();
+        frontGrass = scroller.getFrontGrass();
+        backGrass = scroller.getBackGrass();
+
+        pipe1 = scroller.getPipe1();
+        pipe2 = scroller.getPipe2();
+        pipe3 = scroller.getPipe3();
     }
 
     private void initAssets() {
