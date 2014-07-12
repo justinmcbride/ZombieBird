@@ -1,6 +1,7 @@
 package com.justin.ZBHelpers;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -14,6 +15,8 @@ public class AssetLoader {
     public static Texture texture;
     public static TextureRegion bg, grass;
 
+    public static Preferences prefs;
+
     public static Animation birdAnimation;
     public static TextureRegion bird, birdDown, birdUp;
 
@@ -24,6 +27,11 @@ public class AssetLoader {
     public static Sound dead, flap, coin;
 
     public static void load() {
+        prefs = Gdx.app.getPreferences("ZombieBird");
+
+        if (!prefs.contains("highscore")) {
+            prefs.putInteger("highscore", 0);
+        }
         texture = new Texture(Gdx.files.internal("data/texture.png"));
         texture.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
 
@@ -71,5 +79,14 @@ public class AssetLoader {
 
         font.dispose();
         shadow.dispose();
+    }
+
+    public static void setHighScore(int val) {
+        prefs.putInteger("highscore", val);
+        prefs.flush();
+    }
+
+    public static int getHighScore() {
+        return prefs.getInteger("highscore");
     }
 }
